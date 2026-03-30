@@ -4,13 +4,6 @@ import bitcoin.script.core.InterpreterContext;
 import bitcoin.script.core.ScriptException;
 import bitcoin.script.ops.Operation;
 
-/**
- * An opcode element: resolves its opcode name via the {@link bitcoin.script.ops.OperationFactory}
- * and delegates execution to the resulting {@link Operation}.
- *
- * <p>In a parsed script, any token starting with {@code "OP_"} becomes an
- * {@code OpElement} (e.g. {@code "OP_DUP"}, {@code "OP_HASH160"}).
- */
 public class OpElement implements ScriptElement {
 
     private final String opcodeName;
