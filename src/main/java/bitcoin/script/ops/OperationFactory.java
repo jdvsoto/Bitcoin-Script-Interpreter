@@ -19,8 +19,10 @@ import java.util.Map;
  *   <li>{@code OP_DROP}        – discard top element</li>
  *   <li>{@code OP_EQUAL}       – equality check, push result</li>
  *   <li>{@code OP_EQUALVERIFY} – equality check, abort on failure</li>
- *   <li>{@code OP_HASH160}     – mock hash of top element</li>
- *   <li>{@code OP_CHECKSIG}    – mock signature verification</li>
+ *   <li>{@code OP_HASH160}          – mock hash of top element</li>
+ *   <li>{@code OP_CHECKSIG}         – mock signature verification</li>
+ *   <li>{@code OP_CHECKMULTISIG}    – mock M-of-N multisig verification</li>
+ *   <li>{@code OP_IF} / {@code OP_NOTIF} / {@code OP_ELSE} / {@code OP_ENDIF} – conditional flow</li>
  * </ul>
  */
 public class OperationFactory {
@@ -49,8 +51,9 @@ public class OperationFactory {
         register("OP_EQUALVERIFY",  new OpEqualVerify());
 
         // Hash and signature operations (mock implementations)
-        register("OP_HASH160",      new OpHash160(crypto));
-        register("OP_CHECKSIG",     new OpCheckSig(crypto));
+        register("OP_HASH160",        new OpHash160(crypto));
+        register("OP_CHECKSIG",       new OpCheckSig(crypto));
+        register("OP_CHECKMULTISIG",  new OpCheckMultiSig(crypto));
 
         // Control flow operations
         register("OP_IF",           new OpIf());
