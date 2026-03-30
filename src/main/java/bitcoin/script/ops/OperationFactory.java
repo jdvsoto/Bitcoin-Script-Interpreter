@@ -51,6 +51,12 @@ public class OperationFactory {
         // Hash and signature operations (mock implementations)
         register("OP_HASH160",      new OpHash160(crypto));
         register("OP_CHECKSIG",     new OpCheckSig(crypto));
+
+        // Control flow operations
+        register("OP_IF",           new OpIf());
+        register("OP_NOTIF",        new OpNotIf());
+        register("OP_ELSE",         new OpElse());
+        register("OP_ENDIF",        new OpEndIf());
     }
 
     /**
